@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <style>
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font: 13px Helvetica, Arial;
+      }
+
+      form {
+        background: #000;
+        padding: 3px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+
+      form input {
+        border: 0;
+        padding: 10px;
+        width: 90%;
+        margin-right: .5%;
+      }
+
+      form button {
+        width: 9%;
+        background: rgb(130, 224, 255);
+        border: none; padding: 10px;
+      }
+
+      #messages {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      #messages li {
+        padding: 5px 10px;
+      }
+
+      #messages li:nth-child(odd) {
+        background: #eee;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <form id="input_form" action="">
+      <input id="msg_input" autocomplete="off" /><button>Send</button>
+    </form>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      // create an io object, "socket"; this object represents the
+      // client-side socket (?). I think (?) this triggers the
+      // socket.io server object to emit a "connection" event when it
+      // is declared, but I'll have to figure that out.
+      // Pretty sure it emits the "disconnect" event when it is torn
+      // down (?).
+      // It's definitely passed alongside the "connection" event,
+      // so it can be funneled into the callback function for the
+      // connection listener on the socket.io server.
+      var socket = io();
+
+      var inputForm = document.getElementById("input_form");
+      var msgBox = document.getElementById("msg_input");
+
+      // on submit, prevent the default behavior (page would reload,
+      // causing disconnect/connect events, etc.), then emit a "chat
+      // message" event along with the text from the input box. Then
+      // clear the message box.
+      inputForm.addEventListener("submit", function(event){
+        event.preventDefault();
+        socket.emit("chat message", msgBox.value);
+        msgBox.value = "";
+      })
+    </script>
+  </body>
+</html>
