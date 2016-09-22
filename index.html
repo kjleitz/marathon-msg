@@ -14,7 +14,16 @@
         font: 13px Helvetica, Arial;
       }
 
-      form {
+      #nickname_form {
+        background: #000;
+        padding: 3px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+      }
+
+
+      #msg_form {
         background: #000;
         padding: 3px;
         position: fixed;
@@ -25,12 +34,12 @@
       form input {
         border: 0;
         padding: 10px;
-        width: 90%;
+        width: 75%;
         margin-right: .5%;
       }
 
       form button {
-        width: 9%;
+        width: 24%;
         background: rgb(130, 224, 255);
         border: none; padding: 10px;
       }
@@ -52,12 +61,17 @@
     </style>
   </head>
   <body>
+    <form id="nickname_form" action="">
+      <input id="nickname_input" autocomplete="off" /><button>Set nickname</button>
+    </form>
     <ul id="messages"></ul>
-    <form id="input_form" action="">
+    <form id="msg_form" action="">
       <input id="msg_input" autocomplete="off" /><button>Send</button>
     </form>
     <script src="/socket.io/socket.io.js"></script>
     <script>
+      "use strict";
+
       // create an io object, "socket"; this object represents the
       // client-side socket (?). I think (?) this triggers the
       // socket.io server object to emit a "connection" event when it
@@ -69,18 +83,32 @@
       // connection listener on the socket.io server.
       var socket = io();
 
-      var inputForm = document.getElementById("input_form");
+      var nicknameForm = document.getElementById("nickname_form");
+      var nicknameBox = document.getElementById("nickname_input");
+      var msgForm = document.getElementById("msg_form");
       var msgBox = document.getElementById("msg_input");
 
       // on submit, prevent the default behavior (page would reload,
       // causing disconnect/connect events, etc.), then emit a "chat
       // message" event along with the text from the input box. Then
       // clear the message box.
-      inputForm.addEventListener("submit", function(event){
+      msgForm.addEventListener("submit", function(event){
         event.preventDefault();
         socket.emit("chat message", msgBox.value);
         msgBox.value = "";
-      })
+      });
+
+      nicknameForm.addEventListener("submit", function(event){
+        event.preventDefault();
+        socket.emit("nickname set", nicknameBox.value);
+      });
+
+      socket.addEventListener("message published", function(msg_object){
+        var msgList = document.getElementById("messages");
+        var newMsg = document.createElement("li");
+        newMsg.innerHTML = "<b>" + msg_object.nickname + "</b>: " + msg_object.message;
+        msgList.appendChild(newMsg);
+      });
     </script>
   </body>
 </html>

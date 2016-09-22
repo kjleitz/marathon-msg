@@ -34,13 +34,22 @@ app.get("/", function(req, res) {
 // been instantiated client-side
 io.on("connection", function(socket){
 	console.log("a user connected");
+	socket.nickname = "Anonymous";
 
 	socket.on("disconnect", function(){
 		console.log('user disconnected');
 	});
 
+	socket.on("nickname set", function(nickname){
+		socket.nickname = nickname;
+	})
+
 	socket.on("chat message", function(message){
-		console.log("User says: " + message);
+		console.log(socket.nickname + " says: " + message);
+		io.emit("message published", {
+			nickname: socket.nickname,
+			message: message
+		});
 	})
 });
 
