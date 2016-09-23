@@ -22,11 +22,15 @@ var serv = http.Server(app);
 // mount a socket.io server onto our regular http server
 var io = socket(serv);
 
+// statically servethe  styles and scripts
+app.use("/styles", express.static(__dirname + "/public/styles"));
+app.use("/scripts", express.static(__dirname + "/public/scripts"));
+
 // when the root of the site is accessed, call a callback function,
 // and pass into it the received REQUEST object and an (empty?) RESPONSE
 // object, then just send our index.html file.
 app.get("/", function(req, res) {
-    res.sendFile(__dirname + "/index.html");
+    res.sendFile(__dirname + "/public/index.html");
 });
 
 // have the SOCKET.IO server listen for connection events,
@@ -41,6 +45,7 @@ io.on("connection", function(socket){
 	});
 
 	socket.on("nickname set", function(nickname){
+		console.log("User \"" + socket.nickname + "\" is now \"" + nickname + "\"");
 		socket.nickname = nickname;
 	})
 

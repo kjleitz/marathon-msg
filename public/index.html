@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Marathon Messaging</title>
+    <link rel="stylesheet" type="text/css" href="/styles/main.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,500" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <div id="show_nickname">
+        <h1>You are anonymous.</h1>
+        <button id="change_nickname_btn">Change nickname</button>
+      </div>
+      <div id="change_nickname">
+        <form id="nickname_form" action="">
+          <input id="nickname_input" />
+          <button>Set nickname</button>
+        </form>  
+      </div>
+    </header>
+    <div id="messages_container">
+      <ul id="messages"></ul>
+    </div>
+    <footer>
+      <form id="msg_form" action="">
+        <div id="textarea_div">
+          <textarea id="msg_input" cols="50" rows="3" autofocus></textarea>  
+        </div>
+        <button>Send</button>
+      </form>  
+    </footer>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/scripts/client.js"></script>
+    <script type="text/javascript" src="/scripts/changeName.js"></script>
+  </body>
+</html>

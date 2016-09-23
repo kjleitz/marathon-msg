@@ -1,0 +1,210 @@
+/*----------*/
+/*   MAIN   */
+/*----------*/
+
+body {
+  margin: 0;
+  padding: 3rem 0 4rem 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: #555;
+}
+
+button {
+  background-color: #EEE;
+  border: solid thin #BBB;
+}
+
+
+/*------------------*/
+/*   NICKNAME BAR   */
+/*------------------*/
+
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 0.5rem;
+  border-bottom: solid thin #999;
+  background-color: #E0F0FF;
+}
+
+#show_nickname {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#show_nickname.hide {
+  height: 0;
+  overflow: hidden;
+}
+
+h1 {
+  font-weight: 500;
+  font-size: 1.5rem;
+  flex-grow: 1;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+}
+
+#show_nickname button {
+  padding: 0.5rem;
+  white-space: nowrap;
+}
+
+#change_nickname {
+  height: 0;
+  overflow: hidden;
+  transition: height 1s;
+}
+
+#change_nickname.show {
+  height: auto;
+}
+
+#nickname_form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#nickname_input {
+  flex-grow: 1;
+  min-width: 10rem;
+  font-size: 1.5rem;
+}
+
+#nickname_form button {
+  margin-left: 0.5rem;
+  padding: 0.5rem;
+  white-space: nowrap;
+}
+
+
+/*------------------*/
+/*   MESSAGE AREA   */
+/*------------------*/
+
+#messages_container {
+  padding: 0.5rem;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+h2 {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+  font-size: 1em;
+}
+
+li {
+  line-height: 1.5rem;
+  white-space: pre-wrap;
+}
+
+
+/*-----------------------*/
+/*   SEND MESSAGE AREA   */
+/*-----------------------*/
+
+footer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 4rem;
+  padding: 0.5rem;
+  background-color: #CAD8E6;
+  border-top: solid thin #999;
+}
+
+#msg_form {
+  height: 100%;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+#textarea_div {
+  flex-grow: 1;
+}
+
+#msg_input {
+  display: inline-block;
+  width: 100%;
+  border: solid thin #999;
+  resize: none;
+}
+
+#msg_form button {
+  margin-left: 0.5rem;
+  padding: 0.5rem;
+}
+
+
+
+
+/*
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font: 13px Helvetica, Arial;
+}
+
+#nickname_form {
+  background: #000;
+  padding: 3px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+
+#msg_form {
+  background: #000;
+  padding: 3px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+form input {
+  border: 0;
+  padding: 10px;
+  width: 75%;
+  margin-right: .5%;
+}
+
+form button {
+  width: 24%;
+  background: rgb(130, 224, 255);
+  border: none; padding: 10px;
+}
+
+#messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#messages li {
+  padding: 5px 10px;
+}
+
+#messages li:nth-child(odd) {
+  background: #eee;
+}
