@@ -15,6 +15,14 @@ button {
   border: solid thin #BBB;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
+button:active {
+  background-color: #DDD;
+}
+
 
 /*------------------*/
 /*   NICKNAME BAR   */
@@ -26,7 +34,7 @@ header {
   right: 0;
   left: 0;
   padding: 0.5rem;
-  border-bottom: solid thin #999;
+  border-bottom: solid thin #CAD8E6;
   background-color: #E0F0FF;
 }
 

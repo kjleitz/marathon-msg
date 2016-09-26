@@ -7,14 +7,20 @@ var app = require("express")();
 var serv = require("http").Server(app);
 var io = require("socket.io")(serv);
 
+...etc.
+
 */
 
 var express = require("express");
 var http = require("http");
 var socket = require("socket.io");
+var helmet = require("helmet");
 
 // create an express app
 var app = express();
+
+// use basic http header security measures
+app.use(helmet());
 
 // create an http server to serve our express app
 var serv = http.Server(app);
