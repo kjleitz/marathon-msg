@@ -1,0 +1,38 @@
+body {
+  font-family: "Georgia", serif;
+}
+
+form {
+  max-width: 20rem;
+  margin: 10% auto 0rem auto;
+  padding: 0.5rem;
+  border: solid thin #B0B0AA;
+  background-color: #E0E0DD;
+}
+
+input {
+  display: block;
+  width: 80%;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  border: solid thin #B0B0AA;
+}
+
+#sub {
+  font-family: "Georgia", serif;
+  font-size: 1.1rem;
+  color: #555;
+  width: 50%;
+  padding: 0.5rem;
+  background-color: #D0D0CC;
+}
+
+#sub:hover {
+  cursor: pointer;
+  color: black;
+  box-shadow: 0 0 3px #555;
+}
+
+#sub:active {
+  background-color: #B0B0AA;
+}

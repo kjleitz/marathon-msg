@@ -10,8 +10,12 @@ function toggleNameArea(){
 	changeDiv.classList.toggle("show");
 }
 
-changeButton.addEventListener("click", toggleNameArea);
+changeButton.addEventListener("click", function(){
+	toggleNameArea();
+	document.getElementById("nickname_input").focus();
+});
 changeDiv.addEventListener("submit", function(){
 	toggleNameArea();
 	document.getElementsByTagName("h1")[0].innerHTML = "Name: " + document.getElementById("nickname_input").value;
+	document.getElementById("msg_input").focus();
 });
